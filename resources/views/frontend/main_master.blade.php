@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Rasalina - Personal Portfolio HTML Template</title>
+    <title>Ecommerce App</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="/frontend/assets/css/default.css">
     <link rel="stylesheet" href="/frontend/assets/css/style.css">
     <link rel="stylesheet" href="/frontend/assets/css/responsive.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -72,5 +74,6 @@
 <script src="/frontend/assets/js/wow.min.js"></script>
 <script src="/frontend/assets/js/plugins.js"></script>
 <script src="/frontend/assets/js/main.js"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 </body>
 </html>
