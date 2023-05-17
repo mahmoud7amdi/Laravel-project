@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\AboutController;
+use App\Http\Controllers\Home\ProtfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,12 +43,27 @@ Route::controller(AboutController::class)->group(function (){
     Route::get('all/multi/image','AllMultiImage')->name('all.multi.image');
     Route::get('edit/multi/image/{id}','EditMultiImage')->name('edit.multi.image');
     Route::post('update/multi/image','UpdateMultiImage')->name('update.multi_image');
-    Route::get('delete/multi/image/{id}','DeleteMultiImage')->name('delete.multi.image');
+    Route::get('delete/multi/image','DeleteMultiImage')->name('delete.multi.image');
 
 
 
 
 });
+
+
+Route::controller(ProtfolioController::class)->group(function (){
+    Route::get('all/protfolio','AllProtfolio')->name('all.protfolio');
+    Route::get('add/protfolio','AddProtfolio')->name('add.protfolio');
+    Route::post('store/protfolio','StoreProtfolio')->name('store.protfolio');
+    Route::get('edit/protfolio/{id}','EditProtfolio')->name('edit.protfolio');
+    Route::post('update/protfolio','UpdateProtfolio')->name('update.protfolio');
+    Route::get('delete/protfolio/{id}','DeleteProtfolio')->name('delete.protfolio');
+    Route::get('protfolio/details/{id}','ProtfolioDetails')->name('protfolio.details');
+
+
+
+});
+
 
 
 Route::controller(HomeSliderController::class)->group(function (){
