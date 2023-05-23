@@ -30,6 +30,7 @@
         <link href="/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css"
               href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
     </head>
 

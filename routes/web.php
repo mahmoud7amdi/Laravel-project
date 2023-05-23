@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\AboutController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Home\ProtfolioController;
 use App\Http\Controllers\Home\BlogCategoryController;
 use App\Http\Controllers\Home\BlogController;
 use App\Http\Controllers\Home\FooterController;
+use App\Http\Controllers\Home\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,12 @@ Route::get('/', function () {
 });
 
 
+Route::controller(TestController::class)->group(function (){
+    Route::get('/','HomeMain')->name('home');
+
+
+});
+
 
 //dashnoard routs -------------------->
 Route::get('/dashboard', function () {
@@ -37,13 +45,18 @@ Route::get('/dashboard', function () {
 
 
 //admin Routs ------------------>
-Route::controller(AdminController::class)->group(function (){
-    Route::get('admin/logout','destroy')->name('admin.logout');
-    Route::get('admin/profile','profile')->name('admin.profile');
-    Route::get('edit/profile','EditProfile')->name('edit.profile');
-    Route::post('store/profile','StoreProfile')->name('store.profile');
-    Route::get('change/password','ChangePassword')->name('change.password');
+
+Route::middleware(['auth'])->group(function (){
+    Route::controller(AdminController::class)->group(function (){
+        Route::get('admin/logout','destroy')->name('admin.logout');
+        Route::get('admin/profile','profile')->name('admin.profile');
+        Route::get('edit/profile','EditProfile')->name('edit.profile');
+        Route::post('store/profile','StoreProfile')->name('store.profile');
+        Route::get('change/password','ChangePassword')->name('change.password');
     Route::post('update/password','UpdatePassword')->name('update.password');
+
+
+});
 
 
 });
@@ -79,6 +92,8 @@ Route::controller(ProtfolioController::class)->group(function (){
     Route::post('update/protfolio','UpdateProtfolio')->name('update.protfolio');
     Route::get('delete/protfolio/{id}','DeleteProtfolio')->name('delete.protfolio');
     Route::get('protfolio/details/{id}','ProtfolioDetails')->name('protfolio.details');
+    Route::get('home/protfolio','HomeProtfolio')->name('home.portfolio');
+
 
 
 
@@ -145,6 +160,22 @@ Route::controller(BlogController::class)->group(function (){
 Route::controller(FooterController::class)->group(function (){
     Route::get('footer/setup','FooterSetup')->name('footer.setup');
     Route::post('update/footer','UpdateFooter')->name('update.footer');
+
+
+});
+
+
+
+
+
+Route::controller(ContactController::class)->group(function (){
+    Route::get('contact','Contact')->name('contact.me');
+    Route::post('store/message','StoreMessage')->name('store.message');
+    Route::get('contact/message','ContactMessage')->name('contact.message');
+    Route::get('delete/message/{id}','DeleteMessage')->name('delete.message');
+
+
+
 
 
 });

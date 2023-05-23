@@ -109,4 +109,10 @@ class ProtfolioController extends Controller
         return view('frontend.protfolio_details',compact('protfolio'));
     }
 
+    public function HomeProtfolio()
+    {
+        $protfolio = Protfolio::latest()->get();
+        return view('frontend.protfolio',compact('protfolio'));
+    }
+
 }

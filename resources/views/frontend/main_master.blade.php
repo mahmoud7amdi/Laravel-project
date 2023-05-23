@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Ecommerce App</title>
+    <title>@yield('title')</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="/frontend/assets/css/style.css">
     <link rel="stylesheet" href="/frontend/assets/css/responsive.css">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 </head>
 <body>
@@ -75,5 +78,44 @@
 <script src="/frontend/assets/js/plugins.js"></script>
 <script src="/frontend/assets/js/main.js"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script>
+    @if(Session::has('message'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.success("{{ session('message') }}");
+    @endif
+
+        @if(Session::has('error'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.error("{{ session('error') }}");
+    @endif
+
+        @if(Session::has('info'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.info("{{ session('info') }}");
+    @endif
+
+        @if(Session::has('warning'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.warning("{{ session('warning') }}");
+    @endif
+</script>
 </body>
 </html>
